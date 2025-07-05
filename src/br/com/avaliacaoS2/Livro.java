@@ -3,15 +3,15 @@ package br.com.avaliacaoS2;
 public class Livro {
 	private int codigo;
 	private String nome;
-	private String categoria;
 	private String autor;
+	private int qtd;
 	private boolean ativo;
 	
-	public Livro(int codigo, String nome, String autor, boolean ativo) {
+	public Livro(int codigo, String nome, String autor,int qtd, boolean ativo) {
 			this.codigo = codigo;
 			this.nome = nome;
-			this.categoria = categoria;
 			this.autor = autor;
+			this.qtd = qtd;
 			this.ativo = ativo;
 	}
 	
@@ -23,6 +23,9 @@ public class Livro {
 	}
 	public String getAutor() {
 		return this.autor;		
+	}
+	public int getQtd() {
+		return qtd;
 	}
 	public boolean getAtivo() {
 		return ativo;
@@ -36,16 +39,26 @@ public class Livro {
 	public void setAutor() {
 		this.autor = autor;
 	}
+	public void setQtd() {
+		this.qtd = qtd;
+	}
 	public void setAtivo() {
 		this.ativo = ativo;
 	}
 
 	public void listarLivros() {
 		if (this.ativo == false) {
-			System.out.printf("%-6d | %-10s | %-10s | Inativo \n", this.codigo, this.nome, this.autor);
+			System.out.printf("%-6d | %-10s | %-10s | %-3d | Inativo \n", this.codigo, this.nome, this.autor, this.qtd);
 		} else {
-			System.out.printf("%-6d | %-10s | %-10s | Ativo \n", this.codigo, this.nome, this.autor);
+			System.out.printf("%-6d | %-10s | %-10s | %-3d | Ativo \n", this.codigo, this.nome, this.autor, this.qtd);
 		}
 		
 	}
+	
+	public void retirarLivro() {
+		if (this.qtd > 0) {
+			this.qtd = this.qtd - 1;	
+		}
+	}
+	
 }

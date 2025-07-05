@@ -29,9 +29,11 @@ public class Main {
 	        		String nome = input.nextLine();
 	        		System.out.print("Nome do autor: ");
 	        		String autor = input.nextLine();
+	        		System.out.print("Quantidade: ");
+	        		int qtd = input.nextInt();
 	        		boolean ativo = false;
 	        		
-	        		Livro novoLivro = new Livro(codigo, nome, autor, ativo);
+	        		Livro novoLivro = new Livro(codigo, nome, autor, qtd, ativo);//chama metodo novoLivro
 	        		livros.add(novoLivro);
 	        		System.out.println("Livro cadastrado!\n");
 	        		
@@ -39,27 +41,77 @@ public class Main {
 	        		
 	        	
 	        	case 2:
+	        		System.out.println("=========== LISTA ==========");
 	        		if (livros.isEmpty()) {
 	        			System.out.println("Estoque vazio.");
 	        		}else {
-	        			System.out.println("CODIGO |    NOME    |    AUTOR   |   STATUS");
+	        			System.out.println("CODIGO |    NOME    |    AUTOR   | QTD |   STATUS");
 	        			for(Livro l : livros) {
 	        				l.listarLivros();//chama metodo listar livros.
-	        		}
+	        			}
+	        		}	
 	        		System.out.println();
 
-	        	}
+	        		break;
+	        		
+	        		
+	        	case 3:
+	        		System.out.println("======= RETIRADA =======");
+	        		System.out.print("Codigo do livro: ");
+	        		int codRetirar = input.nextInt();
+	        		Livro livroRetirado = buscarLivro(livros, codRetirar);
+	        		if (livroRetirado != null){
+	        			for (Livro l : livros) {
+	        				if (codRetirar == l.getCodigo()) {
+	        					l.listarLivros();
+	        					
+	        					System.out.println("1. CONFIRMA");
+	        					System.out.println("2. VOLTA");
+	        					opcao = input.nextInt();
+	        					
+	        					switch(opcao) {
+	        						case 1:
+	        							
+	        							l.retirarLivro();
+	        							
+	        			}
+	        		}
+	        		
+	        		
+	        			
+	        	
+	        	
+	        	
 	        		
 	        		
 	        
 	        
 	        
+	        		}
+	        		}      
 	        }
-	        
-	        
 		}while(opcao != 0);
 		
 		
-	}
+		
+		
+		
+		
+		
+		
+		
+		
+
+		}
+	    
+	    //metodo buscar livro  
+	    private static Livro buscarLivro(List<Livro> livros, int codigo) {
+	    	for (Livro l : livros) {
+	    		if (l.getCodigo() == codigo) {
+	    			return l;
+	    		}
+	    	}
+	    	return null;
+	    }
 
 }
