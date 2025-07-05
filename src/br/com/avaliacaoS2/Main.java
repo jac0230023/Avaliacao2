@@ -7,14 +7,15 @@ public class Main {
 		List<Livro> livros = new ArrayList<>();
 		Scanner input = new Scanner(System.in);
 		int opcao;
+		int codigo = 0;
 		
 		do {
 			System.out.println("=========== MENU ===========");
 	        System.out.println("1. Cadastrar novo livro");
 	        System.out.println("2. Listar livros");
 	        System.out.println("3. Retirar livro");
-	        System.out.println("4. Cadastrar lista de espera");
-	        System.out.println("5. Listar espera");
+	        System.out.println("4. Devolver livro");
+	        System.out.println("5. Lista de espera");
 	        System.out.println("0. Sair");
 	        System.out.print("Escolha uma opção: ");
 	        opcao = input.nextInt();  
@@ -22,22 +23,27 @@ public class Main {
 		
 	        switch (opcao) {
 	        	case 1:
-	        		System.out.print("Codigo: ");
-	        		int codigo = input.nextInt();
+	        		System.out.println("======= DEVOLVER =======");
+	        		codigo++;
 	        		input.nextLine();//consome buff
 	        		System.out.print("Nome do livro: ");
 	        		String nome = input.nextLine();
 	        		System.out.print("Nome do autor: ");
 	        		String autor = input.nextLine();
+	        		
+	        		boolean ativo = false;
 	        		System.out.print("Quantidade: ");
 	        		int qtd = input.nextInt();
-	        		boolean ativo = false;
+	        		if (qtd > 0) {//se qtd for maior que 0 livro vai estar disponivel
+	        			ativo = true;
+	        		}
+	        		
 	        		
 	        		Livro novoLivro = new Livro(codigo, nome, autor, qtd, ativo);//chama metodo novoLivro
 	        		livros.add(novoLivro);
 	        		System.out.println("Livro cadastrado!\n");
-	        		
 	        		break;
+	        		
 	        		
 	        	
 	        	case 2:
@@ -71,9 +77,37 @@ public class Main {
 	        					
 	        					switch(opcao) {
 	        						case 1:
-	        							
 	        							l.retirarLivro();
-	        							
+	        							System.out.println("Livro retirado!\n");
+	        						case 2:
+	        							System.out.print("Em breve");
+	        					}		
+	        				}
+	        			}
+	        		}
+	        		
+	        	case 4:
+	        		System.out.println("======= DEVOLVER =======");
+	        		System.out.print("Codigo do livro: ");
+	        		int codDevolver = input.nextInt();
+	        		Livro livroDevolvido = buscarLivro(livros, codDevolver);
+	        		if (livroDevolvido != null) {
+	        			for(Livro l : livros) {
+	        				if (codDevolver == l.getCodigo()) {
+	        					l.listarLivros();
+	        					
+	        					System.out.println("1. CONFIRMA");
+	        					System.out.println("2. VOLTA");
+	        					opcao = input.nextInt();
+	        					
+	        					switch(opcao) {
+	        						case 1:
+	        							l.devolverLivro();
+	        							System.out.println("Livro devolvido!\n");
+	        						case 2:
+	        							System.out.print("Em breve");
+	        					}		
+	        				}
 	        			}
 	        		}
 	        		
@@ -87,11 +121,13 @@ public class Main {
 	        
 	        
 	        
-	        		}
-	        		}      
-	        }
-		}while(opcao != 0);
+	        		
+       		}      
+	        
 		
+		
+		}while(opcao != 0);
+		input.close();
 		
 		
 		

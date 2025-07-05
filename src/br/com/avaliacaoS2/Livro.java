@@ -57,8 +57,19 @@ public class Livro {
 	
 	public void retirarLivro() {
 		if (this.qtd > 0) {
-			this.qtd = this.qtd - 1;	
+			this.qtd --;	
+			if (this.qtd == 0) {
+				this.ativo = false;
+			}
 		}
+	}
+	
+	public void devolverLivro() {
+		this.qtd++;
+		if (this.qtd == 0) {
+			this.ativo = true;
+		}
+		
 	}
 	
 }
