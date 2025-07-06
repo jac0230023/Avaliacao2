@@ -61,7 +61,7 @@ public class Main {
 	        		break;
 	        		
 	        		
-	        	case 3:
+	        	case 3:// implementar funca se o livo estiver 0 direciona para cadastro de esperar
 	        		System.out.println("======= RETIRADA =======");
 	        		System.out.print("Codigo do livro: ");
 	        		int codRetirar = input.nextInt();
@@ -110,6 +110,8 @@ public class Main {
 	        				}
 	        			}
 	        		}
+	        		
+	        		//cadastra espera por livro e verificar limpeza de sistema
 	        		
 	        		
 	        			
