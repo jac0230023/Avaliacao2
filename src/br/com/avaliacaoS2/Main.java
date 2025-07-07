@@ -41,7 +41,10 @@ public class Main {
 	        		}
 	        		Livro novoLivro = new Livro(codigo, nome, autor, qtd, ativo);//chama metodo novoLivro
 	        		livros.add(novoLivro);
-	        		System.out.println("Livro cadastrado!\n");
+	        		System.out.printf("Livro '%s 'cadastrado!\n", nome);
+	        		input.nextLine();
+	        		System.out.print("\nPressione ENTER para continuar!");
+	        		String skip = input.nextLine();
 	        		break;
 	        		
 	        		
@@ -57,26 +60,28 @@ public class Main {
 	        			}
 	        		}	
 	        		System.out.println();
-
+	        		input.nextLine();
+	        		System.out.print("\nPressione ENTER para continuar!");
+	        		skip = input.nextLine();
 	        		break;
 	        		
 	        		
-	        	case 3:// implementar cadastro de fila
+	        	case 3:// implementar direcionamento para cadastro de fila
 	        		System.out.println("======= RETIRADA =======");
 	        		System.out.print("Codigo do livro: ");
 	        		int codRetirar = input.nextInt();
 	        		Livro livroRetirado = buscarLivro(livros, codRetirar);
-	        		if (livroRetirado != null){
-	        			for (Livro l : livros) {
-	        				if (codRetirar == l.getCodigo()) {
-	        					l.retirarLivro();
-	        					System.out.printf("Livro '%s' retirado!\n", l.getNome());		
-	        				}
-	        			}
+	        		if (livroRetirado != null){	
+	        			livroRetirado.retirarLivro();
+	        			System.out.printf("Livro '%s' retirado!\n", livroRetirado.getNome());		
 	        		}else {
         				System.out.println("Livro nao encontrado");
         			}
+	        		input.nextLine();
+	        		System.out.print("\nPressione ENTER para continuar!");
+	        		skip = input.nextLine();
 	        		break;
+	        		
 	        		
 	        	case 4:
 	        		System.out.println("======= DEVOLVER =======");
@@ -93,7 +98,11 @@ public class Main {
 	        		}else {
         				System.out.println("Livro nao encontrado");
         			}
+	        		input.nextLine();
+	        		System.out.print("\nPressione ENTER para continuar!");
+	        		skip = input.nextLine();
 	        		break;
+	        		
 	        		
 	        	case 5:
 	        		System.out.println("======= CADASTRAR EM FILA =======");
@@ -107,7 +116,11 @@ public class Main {
 	        		Pessoa novaPessoa = new Pessoa(nome, contato, codLivro);
 	        		fila.add(novaPessoa);
 	        		System.out.println("Cadastro realizado\n");
+	        		input.nextLine();
+	        		System.out.print("\nPressione ENTER para continuar!");
+	        		skip = input.nextLine();
 	        		break;
+	        		
 	        		
 	        	case 6:
 	        		System.out.println("======= FILA DE ESPERA =======");
@@ -119,37 +132,24 @@ public class Main {
 	        				p.listarPessoa();	
 	        			}
 	        		}
-	        		//cadastra espera por livro e verificar limpeza de sistema
+	        		System.out.println();
+	        		input.nextLine();
+	        		System.out.print("\nPressione ENTER para continuar!");
+	        		skip = input.nextLine();
+	        		break;
+	        		
+	        	case 0:
+	        		System.out.println("Encerrando Sistema");
+	        		break;
 	        		
 	        		
-	        			
-	        	
-	        	
-	        	
-	        		
-	        		
-	        
-	        
-	        
-	        		
+	        	default: 
+	        		System.out.println("Opção invalida.");
        		}      
-	        
-		
-		
+	        System.out.println();
 		}while(opcao != 0);
 		input.close();
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
 		}
-	    
 	    //metodo buscar livro  
 	    private static Livro buscarLivro(List<Livro> livros, int codigo) {
 	    	for (Livro l : livros) {
@@ -159,6 +159,4 @@ public class Main {
 	    	}
 	    	return null;
 	    }
-	    
-
 }
