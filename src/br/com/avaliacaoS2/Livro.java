@@ -55,21 +55,26 @@ public class Livro {
 		
 	}
 	
-	public void retirarLivro() {
+	public boolean retirarLivro() {
 		if (this.qtd > 0) {
 			this.qtd --;	
 			if (this.qtd == 0) {
 				this.ativo = false;
 			}
+			return true;
+		}else {
+			return false;
 		}
 	}
 	
-	public void devolverLivro() {
+	public boolean devolverLivro() {
 		this.qtd++;
-		if (this.qtd == 0) {
+		if (this.qtd > 0) {
 			this.ativo = true;
+			return true;
+		}else {
+			return false;
 		}
-		
 	}
 	
 }

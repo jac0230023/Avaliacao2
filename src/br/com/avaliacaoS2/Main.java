@@ -23,7 +23,7 @@ public class Main {
 		
 	        switch (opcao) {
 	        	case 1:
-	        		System.out.println("======= DEVOLVER =======");
+	        		System.out.println("======= CADASTRAR LIVRO =======");
 	        		codigo++;
 	        		input.nextLine();//consome buff
 	        		System.out.print("Nome do livro: ");
@@ -34,11 +34,9 @@ public class Main {
 	        		boolean ativo = false;
 	        		System.out.print("Quantidade: ");
 	        		int qtd = input.nextInt();
-	        		if (qtd > 0) {//se qtd for maior que 0 livro vai estar disponivel
+	        		if (qtd > 0) {//se qtd CADASTRADA for maior que 0 livro vai estar disponivel
 	        			ativo = true;
 	        		}
-	        		
-	        		
 	        		Livro novoLivro = new Livro(codigo, nome, autor, qtd, ativo);//chama metodo novoLivro
 	        		livros.add(novoLivro);
 	        		System.out.println("Livro cadastrado!\n");
@@ -61,7 +59,7 @@ public class Main {
 	        		break;
 	        		
 	        		
-	        	case 3:// implementar funca se o livo estiver 0 direciona para cadastro de esperar
+	        	case 3:// implementar cadastro de fila
 	        		System.out.println("======= RETIRADA =======");
 	        		System.out.print("Codigo do livro: ");
 	        		int codRetirar = input.nextInt();
@@ -69,22 +67,14 @@ public class Main {
 	        		if (livroRetirado != null){
 	        			for (Livro l : livros) {
 	        				if (codRetirar == l.getCodigo()) {
-	        					l.listarLivros();
-	        					
-	        					System.out.println("1. CONFIRMA");
-	        					System.out.println("2. VOLTA");
-	        					opcao = input.nextInt();
-	        					
-	        					switch(opcao) {
-	        						case 1:
-	        							l.retirarLivro();
-	        							System.out.println("Livro retirado!\n");
-	        						case 2:
-	        							System.out.print("Em breve");
-	        					}		
+	        					l.retirarLivro();
+	        					System.out.printf("Livro '%s' retirado!\n", l.getNome());		
 	        				}
 	        			}
-	        		}
+	        		}else {
+        				System.out.println("Livro nao encontrado");
+        			}
+	        		break;
 	        		
 	        	case 4:
 	        		System.out.println("======= DEVOLVER =======");
@@ -94,23 +84,15 @@ public class Main {
 	        		if (livroDevolvido != null) {
 	        			for(Livro l : livros) {
 	        				if (codDevolver == l.getCodigo()) {
-	        					l.listarLivros();
-	        					
-	        					System.out.println("1. CONFIRMA");
-	        					System.out.println("2. VOLTA");
-	        					opcao = input.nextInt();
-	        					
-	        					switch(opcao) {
-	        						case 1:
-	        							l.devolverLivro();
-	        							System.out.println("Livro devolvido!\n");
-	        						case 2:
-	        							System.out.print("Em breve");
-	        					}		
+	        					l.devolverLivro();
+	        					System.out.printf("Livro '%s' devolvido!\n", l.getNome());	
 	        				}
 	        			}
 	        		}
+	        		break;
 	        		
+	        	case 5:
+	        		System.out.println("======= CADASTRAR FILA =======");
 	        		//cadastra espera por livro e verificar limpeza de sistema
 	        		
 	        		
