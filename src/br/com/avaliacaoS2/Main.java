@@ -41,7 +41,7 @@ public class Main {
 	        		}
 	        		Livro novoLivro = new Livro(codigo, nome, autor, qtd, ativo);//chama metodo novoLivro
 	        		livros.add(novoLivro);
-	        		System.out.printf("Livro '%s 'cadastrado!\n", nome);
+	        		System.out.printf("Livro '%s' cadastrado!\n", nome);
 	        		input.nextLine();
 	        		System.out.print("\nPressione ENTER para continuar!");
 	        		String skip = input.nextLine();
@@ -72,8 +72,38 @@ public class Main {
 	        		int codRetirar = input.nextInt();
 	        		Livro livroRetirado = buscarLivro(livros, codRetirar);
 	        		if (livroRetirado != null){	
-	        			livroRetirado.retirarLivro();
-	        			System.out.printf("Livro '%s' retirado!\n", livroRetirado.getNome());		
+	        			if(livroRetirado.retirarLivro()) {
+	        				System.out.printf("Livro '%s' retirado!\n", livroRetirado.getNome());
+	        			}else {
+	        				System.out.println("Não há disponibilidade.");
+	        				System.out.println("Entrar na fila de espera?");
+	        				System.out.println("1. SIM");
+	        				System.out.println("2. NÃO");
+	        				int opcao2 = input.nextInt();
+	        				switch (opcao2) {
+	        				case 1: 
+	        					System.out.println("======= CADASTRAR EM FILA =======");
+	        	        		input.nextLine();
+	        	        		System.out.print("Nome: ");
+	        	        		nome = input.nextLine();
+	        	        		System.out.print("Contato: ");
+	        	        		String contato = input.nextLine();
+	        	        		Pessoa novaPessoa = new Pessoa(nome, contato, livroRetirado.getCodigo());
+	        	        		fila.add(novaPessoa);
+	        	        		System.out.println("Cadastro realizado!");
+	        	        		System.out.print("\nPressione ENTER para continuar!");
+	        	        		skip = input.nextLine();
+	        	        		break;
+	        				case 2:
+	        					System.out.println("Sem problema!\n");
+	        	        		System.out.print("\nPressione ENTER para continuar!");
+	        	        		break;
+	        				default:
+	        					System.out.println("Opção invalida.");
+	        				break;
+	        				}
+	        			}
+	        					
 	        		}else {
         				System.out.println("Livro nao encontrado");
         			}
@@ -109,9 +139,9 @@ public class Main {
 	        		input.nextLine();
 	        		System.out.print("Nome: ");
 	        		nome = input.nextLine();
-	        		System.out.println("Contato: ");
+	        		System.out.print("Contato: ");
 	        		String contato = input.nextLine();
-	        		System.out.println("Codigo do livro");
+	        		System.out.print("Codigo do livro: ");
 	        		int codLivro = input.nextInt();
 	        		Pessoa novaPessoa = new Pessoa(nome, contato, codLivro);
 	        		fila.add(novaPessoa);
