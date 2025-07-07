@@ -5,6 +5,7 @@ import java.util.*;
 public class Main {
 	public static void main(String[] args) {
 		List<Livro> livros = new ArrayList<>();
+		Queue<Pessoa> fila = new LinkedList<>(); 
 		Scanner input = new Scanner(System.in);
 		int opcao;
 		int codigo = 0;
@@ -88,11 +89,21 @@ public class Main {
 	        					System.out.printf("Livro '%s' devolvido!\n", l.getNome());	
 	        				}
 	        			}
-	        		}
+	        		}else {
+        				System.out.println("Livro nao encontrado");
+        			}
 	        		break;
 	        		
 	        	case 5:
 	        		System.out.println("======= CADASTRAR FILA =======");
+	        		System.out.println("Nome: ");
+	        		nome = input.nextLine();
+	        		System.out.println("Contato: ");
+	        		String contato = input.nextLine();
+	        		System.out.println("Codigo do livro");
+	        		int codLivro = input.nextInt();
+	        		Pessoa novaPessoa = new Pessoa(nome, contato, codLivro);
+	        		fila.add(novaPessoa);
 	        		//cadastra espera por livro e verificar limpeza de sistema
 	        		
 	        		
@@ -133,5 +144,6 @@ public class Main {
 	    	}
 	    	return null;
 	    }
+	    
 
 }
