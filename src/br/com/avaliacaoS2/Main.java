@@ -16,7 +16,8 @@ public class Main {
 	        System.out.println("2. Listar livros");
 	        System.out.println("3. Retirar livro");
 	        System.out.println("4. Devolver livro");
-	        System.out.println("5. Lista de espera");
+	        System.out.println("5. Cadastra lista de espera");
+	        System.out.println("6. Lista de espera");
 	        System.out.println("0. Sair");
 	        System.out.print("Escolha uma opção: ");
 	        opcao = input.nextInt();  
@@ -95,8 +96,9 @@ public class Main {
 	        		break;
 	        		
 	        	case 5:
-	        		System.out.println("======= CADASTRAR FILA =======");
-	        		System.out.println("Nome: ");
+	        		System.out.println("======= CADASTRAR EM FILA =======");
+	        		input.nextLine();
+	        		System.out.print("Nome: ");
 	        		nome = input.nextLine();
 	        		System.out.println("Contato: ");
 	        		String contato = input.nextLine();
@@ -104,6 +106,19 @@ public class Main {
 	        		int codLivro = input.nextInt();
 	        		Pessoa novaPessoa = new Pessoa(nome, contato, codLivro);
 	        		fila.add(novaPessoa);
+	        		System.out.println("Cadastro realizado\n");
+	        		break;
+	        		
+	        	case 6:
+	        		System.out.println("======= FILA DE ESPERA =======");
+	        		if (fila.isEmpty()) {
+	        			System.out.println("Não ha fila de espera");
+	        		}else {
+	        			System.out.print("      NOME      |    CONTATO    | COD LIVRO\n");
+	        			for(Pessoa p : fila) {
+	        				p.listarPessoa();	
+	        			}
+	        		}
 	        		//cadastra espera por livro e verificar limpeza de sistema
 	        		
 	        		

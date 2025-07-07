@@ -29,4 +29,8 @@ public class Pessoa {
 	public void setCodLivro() {
 		this.codLivro = codLivro;
 	}
+	
+	public void listarPessoa() {
+		System.out.printf("%-16s|%-15s|%-10d\n", this.nome, this.contato, this.codLivro);
+	}
 }
