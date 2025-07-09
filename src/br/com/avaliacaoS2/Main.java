@@ -35,8 +35,7 @@ public class Main {
 	        		livros.add(novoLivro);
 	        		System.out.printf("Livro '%s' cadastrado!\n", nome);
 	        		input.nextLine();
-	        		System.out.print("\nPressione ENTER para continuar!");
-	        		String skip = input.nextLine();
+							enterContinua(input);
 	        		break;
 	        		
 	        		
@@ -53,8 +52,7 @@ public class Main {
 	        		}	
 	        		System.out.println();
 	        		input.nextLine();
-	        		System.out.print("\nPressione ENTER para continuar!");
-	        		skip = input.nextLine();
+							enterContinua(input);
 	        		break;
 	        		
 	        		
@@ -75,21 +73,20 @@ public class Main {
 	        				switch (opcao2) {
 	        				case 1: 
 	        					System.out.println("======= CADASTRAR EM FILA =======");
-	        	        		input.nextLine();
-	        	        		System.out.print("Nome: ");
-	        	        		nome = input.nextLine();
-	        	        		System.out.print("Contato: ");
-	        	        		String contato = input.nextLine();
-	        	        		Pessoa novaPessoa = new Pessoa(nome, contato, livroRetirado.getCodigo());
-	        	        		fila.add(novaPessoa);
-	        	        		System.out.println("Cadastro realizado!");
-	        	        		System.out.print("\nPressione ENTER para continuar!");
-	        	        		skip = input.nextLine();
-	        	        		break;
+	        	        	input.nextLine();
+	        	        	System.out.print("Nome: ");
+	        	        	nome = input.nextLine();
+	        	        	System.out.print("Contato: ");
+	        	        	String contato = input.nextLine();
+	        	        	Pessoa novaPessoa = new Pessoa(nome, contato, livroRetirado.getCodigo());
+	        	        	fila.add(novaPessoa);
+	        	        	System.out.println("Cadastro realizado!");
+											enterContinua(input);
+	        	        	break;
 	        				case 2:
 	        					System.out.println("Sem problema!\n");
-	        	        		System.out.print("\nPressione ENTER para continuar!");
-	        	        		break;
+										enterContinua(input);
+	        	        break;
 	        				default:
 	        					System.out.println("Opção invalida.");
 	        				break;
@@ -100,8 +97,7 @@ public class Main {
         				System.out.println("Livro nao encontrado");
         			}
 	        		input.nextLine();
-	        		System.out.print("\nPressione ENTER para continuar!");
-	        		skip = input.nextLine();
+							enterContinua(input);
 	        		break;
 	        		
 	        		
@@ -121,8 +117,7 @@ public class Main {
         				System.out.println("Livro nao encontrado");
         			}
 	        		input.nextLine();
-	        		System.out.print("\nPressione ENTER para continuar!");
-	        		skip = input.nextLine();
+							enterContinua(input);
 	        		break;
 	        		
 	        		
@@ -139,8 +134,7 @@ public class Main {
 	        		fila.add(novaPessoa);
 	        		System.out.println("Cadastro realizado\n");
 	        		input.nextLine();
-	        		System.out.print("\nPressione ENTER para continuar!");
-	        		skip = input.nextLine();
+							enterContinua(input);
 	        		break;
 	        		
 	        		
@@ -156,8 +150,7 @@ public class Main {
 	        		}
 	        		System.out.println();
 	        		input.nextLine();
-	        		System.out.print("\nPressione ENTER para continuar!");
-	        		skip = input.nextLine();
+	        		enterContinua(input);
 	        		break;
 	        		
 	        	case 0:
@@ -197,7 +190,7 @@ public class Main {
 	public static void exibirTitulo(String titulo){
 				System.out.println("======= "+titulo+" =======");
 			}
-	//metodo cadastro de fila
+	//metodo enterContinua confirmação para proseguir para o proximo "passo"
 	public static void enterContinua(Scanner input){
 		System.out.print("\nPressione ENTER para continuar!");
 		String skip = input.nextLine();
