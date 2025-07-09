@@ -198,7 +198,7 @@ public class Main {
 				System.out.println("======= "+titulo+" =======");
 			}
 	//metodo cadastro de fila
-	public static void enterContinua(){
+	public static void enterContinua(Scanner input){
 		System.out.print("\nPressione ENTER para continuar!");
 		String skip = input.nextLine();
 	}
