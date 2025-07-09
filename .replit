@@ -1,0 +1,25 @@
+modules = ["java-graalvm22.3"]
+run = "run"
+
+[nix]
+channel = "stable-24_05"
+packages = ["run"]
+
+[deployment]
+run = ["sh", "-c", "run"]
+
+[workflows]
+runButton = "Executar Aplicação Java"
+
+[[workflows.workflow]]
+name = "Executar Aplicação Java"
+author = 44181573
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "javac -d . src/br/com/avaliacaoS2/*.java"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "java br.com.avaliacaoS2.Main"
