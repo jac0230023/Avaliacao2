@@ -1,4 +1,4 @@
-	package br.com.avaliacaoS2;
+package br.com.avaliacaoS2;
 
 import java.util.*;
 
@@ -172,8 +172,8 @@ public class Main {
 		}while(opcao != 0);
 		input.close();
 		}
-	    //metodo para buscar livro  
-	    private static Livro buscarLivro(List<Livro> livros, int codigo) {
+	//metodo para buscar livro  
+	private static Livro buscarLivro(List<Livro> livros, int codigo) {
 	    	for (Livro l : livros) {
 	    		if (l.getCodigo() == codigo) {
 	    			return l;
@@ -181,8 +181,8 @@ public class Main {
 	    	}
 	    	return null;
 	    }
-			//metodo para exibir o menu
-			public static void exibirMenu(){
+	//metodo para exibir o menu
+	public static void exibirMenu(){
 					System.out.println("=========== MENU ===========");
 					System.out.println("1. Cadastrar novo livro");
 					System.out.println("2. Listar livros");
@@ -193,8 +193,14 @@ public class Main {
 					System.out.println("0. Sair");
 					System.out.print("Escolha uma opção: ");
 			}
-			//metodo para exibir o titulo
-			public static void exibirTitulo(String titulo){
+	//metodo para exibir o titulo
+	public static void exibirTitulo(String titulo){
 				System.out.println("======= "+titulo+" =======");
 			}
+	//metodo cadastro de fila
+	public static void enterContinua(){
+		System.out.print("\nPressione ENTER para continuar!");
+		String skip = input.nextLine();
+	}
+	
 }
