@@ -1,4 +1,4 @@
-package br.com.avaliacaoS2;
+	package br.com.avaliacaoS2;
 
 import java.util.*;
 
@@ -11,15 +11,7 @@ public class Main {
 		int codigo = 0;
 		
 		do {
-			System.out.println("=========== MENU ===========");
-	        System.out.println("1. Cadastrar novo livro");
-	        System.out.println("2. Listar livros");
-	        System.out.println("3. Retirar livro");
-	        System.out.println("4. Devolver livro");
-	        System.out.println("5. Cadastra lista de espera");
-	        System.out.println("6. Lista de espera");
-	        System.out.println("0. Sair");
-	        System.out.print("Escolha uma opção: ");
+					exibirMenu();
 	        opcao = input.nextInt();  
 	        System.out.println();
 		
@@ -189,4 +181,18 @@ public class Main {
 	    	}
 	    	return null;
 	    }
+
+
+			//metodo menu
+			public static exibirMenu(){
+					System.out.println("=========== MENU ===========");
+					System.out.println("1. Cadastrar novo livro");
+					System.out.println("2. Listar livros");
+					System.out.println("3. Retirar livro");
+					System.out.println("4. Devolver livro");
+					System.out.println("5. Cadastra lista de espera");
+					System.out.println("6. Lista de espera");
+					System.out.println("0. Sair");
+					System.out.print("Escolha uma opção: ");
+			}
 }
