@@ -17,7 +17,7 @@ public class Main {
 		
 	        switch (opcao) {
 	        	case 1:
-	        		System.out.println("======= CADASTRAR LIVRO =======");
+	        		exibirTitulo("CADASTRAR LIVRO");
 	        		codigo++;
 	        		input.nextLine();//consome buff
 	        		System.out.print("Nome do livro: ");
@@ -42,7 +42,7 @@ public class Main {
 	        		
 	        	
 	        	case 2:
-	        		System.out.println("=========== LISTA ==========");
+	        		exibirTitulo("ACERVO");
 	        		if (livros.isEmpty()) {
 	        			System.out.println("Estoque vazio.");
 	        		}else {
@@ -59,7 +59,7 @@ public class Main {
 	        		
 	        		
 	        	case 3:// implementar direcionamento para cadastro de fila
-	        		System.out.println("======= RETIRADA =======");
+							exibirTitulo("RETIRADA");
 	        		System.out.print("Codigo do livro: ");
 	        		int codRetirar = input.nextInt();
 	        		Livro livroRetirado = buscarLivro(livros, codRetirar);
@@ -106,7 +106,7 @@ public class Main {
 	        		
 	        		
 	        	case 4:
-	        		System.out.println("======= DEVOLVER =======");
+							exibirTitulo("DEVOLUÇÃO");
 	        		System.out.print("Codigo do livro: ");
 	        		int codDevolver = input.nextInt();
 	        		Livro livroDevolvido = buscarLivro(livros, codDevolver);
@@ -127,7 +127,7 @@ public class Main {
 	        		
 	        		
 	        	case 5:
-	        		System.out.println("======= CADASTRAR EM FILA =======");
+							exibirTitulo("CADASTRO FILA");
 	        		input.nextLine();
 	        		System.out.print("Nome: ");
 	        		nome = input.nextLine();
@@ -145,7 +145,7 @@ public class Main {
 	        		
 	        		
 	        	case 6:
-	        		System.out.println("======= FILA DE ESPERA =======");
+							exibirTitulo("LISTA DE ESPERA");
 	        		if (fila.isEmpty()) {
 	        			System.out.println("Não ha fila de espera");
 	        		}else {
@@ -172,7 +172,7 @@ public class Main {
 		}while(opcao != 0);
 		input.close();
 		}
-	    //metodo buscar livro  
+	    //metodo para buscar livro  
 	    private static Livro buscarLivro(List<Livro> livros, int codigo) {
 	    	for (Livro l : livros) {
 	    		if (l.getCodigo() == codigo) {
@@ -181,10 +181,8 @@ public class Main {
 	    	}
 	    	return null;
 	    }
-
-
-			//metodo menu
-			public static exibirMenu(){
+			//metodo para exibir o menu
+			public static void exibirMenu(){
 					System.out.println("=========== MENU ===========");
 					System.out.println("1. Cadastrar novo livro");
 					System.out.println("2. Listar livros");
@@ -194,5 +192,9 @@ public class Main {
 					System.out.println("6. Lista de espera");
 					System.out.println("0. Sair");
 					System.out.print("Escolha uma opção: ");
+			}
+			//metodo para exibir o titulo
+			public static void exibirTitulo(String titulo){
+				System.out.println("======= "+titulo+" =======");
 			}
 }
